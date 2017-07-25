@@ -1,0 +1,39 @@
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
+buildscript {
+	ext {
+		springBootVersion = '1.5.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'org.springframework:springloaded:1.2.1.RELEASE'
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+bootRun {
+	addResources = true
+}
+
+dependencies {
+	compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22'
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile("org.springframework.boot:spring-boot-starter-web") {
+		exclude module: "spring-boot-starter-tomcat"
+	}
+	compile("org.springframework.boot:spring-boot-starter-undertow")
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}

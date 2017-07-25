@@ -1,0 +1,18 @@
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+    encoding: UTF-8
+
+server:
+  ssl:
+    key-store: keystore.p12
+    key-store-password: oreore
+    keyStoreType: PKCS12
+    keyAlias: undertow
+  undertow:
+    accesslog:
+      enabled: true
+      pattern: common
+#      pattern: '%t %a "%r" %s (%D ms)'
+      rotate: true
